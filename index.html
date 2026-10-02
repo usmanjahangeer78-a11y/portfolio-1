@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usman Jahangeer | Frontend Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --brown: #754c32;
+    --dark: #34251c;
+    --cream: #f8f4ed;
+    --white: #ffffff;
+    --light-brown: #e9d9c7;
+    --muted: #81766d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    height: 85px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--brown);
+}
+
+.logo span {
+    color: var(--dark);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--brown);
+}
+
+.btn {
+    background: var(--brown);
+    color: rgb(255, 252, 252);
+    padding: 13px 25px;
+    border-radius: 7px;
+    display: inline-block;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: var(--dark);
+    transform: translateY(-3px);
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 650px;
+    padding: 90px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-content {
+    max-width: 650px;
+    animation: fadeUp 1s ease;
+}
+
+.tag {
+    color: var(--brown);
+    background: var(--light-brown);
+    padding: 9px 16px;
+    display: inline-block;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.12;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--brown);
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 17px;
+    max-width: 560px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.outline-btn {
+    border: 1px solid var(--brown);
+    color: var(--brown);
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-weight: 600;
+}
+
+.hero-image {
+    width: 340px;
+    height: 410px;
+    background: linear-gradient(145deg, #e9d9c7, #b98f6e);
+    border-radius: 180px 180px 25px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    flex-shrink: 0;
+    box-shadow: 20px 20px 0 #e8dfd3;
+}
+
+.hero-image h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--brown);
+}
+
+section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title small {
+    color: var(--brown);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    margin-top: 12px;
+}
+
+.about {
+    background: white;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-content p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 2;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.skill {
+    background: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #eee5da;
+    transition: .3s;
+}
+
+.skill:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px #754c3215;
+}
+
+.skill h3 {
+    color: var(--brown);
+    margin-bottom: 10px;
+}
+
+.skill p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.projects {
+    background: white;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: var(--cream);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+}
+
+.project-image {
+    height: 190px;
+    background: linear-gradient(135deg, #e9d9c7, #b98f6e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.project-info a {
+    display: inline-block;
+    color: var(--brown);
+    font-weight: 700;
+    margin-top: 18px;
+}
+
+.education-card {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    border-left: 5px solid var(--brown);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px #754c3210;
+}
+
+.education-card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.education-card p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.contact {
+    background: white;
+    text-align: center;
+}
+
+.contact p {
+    color: var(--muted);
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 14px;
+}
+
+footer span {
+    color: #d8b797;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    nav {
+        padding: 0 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 25px;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-contact {
+        display: none;
+    }
+
+    .hero {
+        padding: 75px 6%;
+    }
+
+    .hero-image {
+        width: 260px;
+        height: 320px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Usman Frontend developer<span>.</span></div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="btn nav-contact">Let's Talk</a>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+        <span class="tag">✦ FRONTEND DEVELOPER & VIBE CODER</span>
+
+        <h1>
+            Hello, I'm <span>Usman Jahangeer.</span>
+        </h1>
+
+        <p>
+            I am a Frontend Developer, Vibe Coder.I am a Software
+            Engineering student at The Islamia University of
+            Bahawalpur (IUB). I love turning creative ideas into
+            beautiful, modern and interactive digital experiences.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn">Explore My Work ↗</a>
+            <a href="#contact" class="outline-btn">Contact Me</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <h2>Creative<br>Mind.<br>Digital<br>Vision.</h2>
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="section-title">
+        <small>Get To Know Me</small>
+        <h2>About Me</h2>
+    </div>
+
+    <div class="about-content">
+        <p>
+            My name is Usman Jahangeer. I am passionate about
+            frontend development, creative coding and modern web
+            technologies. As a Software Engineering student at
+            The Islamia University of Bahawalpur (IUB), I am
+            continuously learning and improving my development
+            skills. My goal is to build websites that are not
+            only visually beautiful but also fast, responsive
+            and user-friendly.
+        </p>
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <div class="section-title">
+        <small>What I Work With</small>
+        <h2>My Skills</h2>
+    </div>
+
+    <div class="skills-grid">
+
+        <div class="skill">
+            <h3>HTML</h3>
+            <p>Modern Web Structure</p>
+        </div>
+
+        <div class="skill">
+            <h3>CSS</h3>
+            <p>Styling & Responsive Design</p>
+        </div>
+
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <p>Interactive Web Experiences</p>
+        </div>
+
+        <div class="skill">
+            <h3>Vibe Coding</h3>
+            <p>AI-Assisted Development</p>
+        </div>
+
+        <div class="skill">
+            <h3>Responsive UI</h3>
+            <p>Mobile-Friendly Websites</p>
+        </div>
+
+        <div class="skill">
+            <h3>Git & GitHub</h3>
+            <p>Version Control</p>
+        </div>
+
+        <div class="skill">
+            <h3>UI Design</h3>
+            <p>Creative Interfaces</p>
+        </div>
+
+        <div class="skill">
+            <h3>Problem Solving</h3>
+            <p>Logical Thinking</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+
+    <div class="section-title">
+        <small>My Recent Work</small>
+        <h2>Featured Projects</h2>
+    </div>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <div class="project-image">💻</div>
+            <div class="project-info">
+                <h3>Personal Portfolio</h3>
+                <p>A modern personal website showcasing my skills,
+                education and development journey.</p>
+                <a href="#contact">View Project ↗</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">🎨</div>
+            <div class="project-info">
+                <h3>Creative Landing Page</h3>
+                <p>A stylish landing page with modern UI,
+                beautiful layouts and responsive design.</p>
+                <a href="#contact">View Project ↗</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">⚡</div>
+            <div class="project-info">
+                <h3>Interactive Web App</h3>
+                <p>A simple interactive web experience
+                built using frontend technologies.</p>
+                <a href="#contact">View Project ↗</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+
+    <div class="section-title">
+        <small>My Academic Journey</small>
+        <h2>Education</h2>
+    </div>
+
+    <div class="education-card">
+        <h3>Software Engineering</h3>
+        <p><strong>The Islamia University of Bahawalpur (IUB)</strong></p>
+        <p>Currently pursuing my studies in Software Engineering,
+        developing my knowledge of programming, technology
+        and software development.</p>
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="section-title">
+        <small>Let's Connect</small>
+        <h2>Have a Project in Mind?</h2>
+    </div>
+
+    <p>
+        I am always interested in creative ideas,
+        collaborations and new opportunities.
+        Let's build something amazing together!
+    </p>
+
+    <a href="mailto:your-email@example.com" class="btn">
+        for contact ✉usmanjahangeer78@gmail.com
+    </a>
+
+</section>
+
+<footer>
+    <p>© 2026 <span>Usman Jahangeer</span>. All Rights Reserved.</p>
+    <p style="margin-top:8px;">Designed with creativity & passion.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+function closeMenu() {
+    document.getElementById("navLinks").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
